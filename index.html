@@ -10,12 +10,21 @@
   </body>
   <script type="text/javascript">
     let output = document.getElementById('timer');
+    let countDownDate = new Date("Mar 2, 2019 11:19:00").getTime();
     function updateClock(){
-      let time = new Date();
-      let day = time.getDays();
-      let hour = time.getHours();
-      let min = time.getMinutes();
-      output.innerHTML = "test";
+      // Get todays date and time
+      let now = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      let distance = countDownDate - now;
+
+      // Time calculations for days, hours, minutes and seconds
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      output.innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";;
     }
     
     setTimeout(updateClock, 1000);
